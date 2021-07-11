@@ -13,13 +13,13 @@ public class Main {
         InputStream inputStream = classloader.getResourceAsStream(args[0]);
         CharStream charStream = CharStreams.fromStream(inputStream);
 
-        ImpLexer lexer = new ImpLexer(charStream);
+        HaveFunLexer lexer = new HaveFunLexer(charStream);
         CommonTokenStream tokenStream = new CommonTokenStream(lexer);
-        ImpParser parser = new ImpParser(tokenStream);
+        HaveFunParser parser = new HaveFunParser(tokenStream);
 
         ParseTree tree = parser.prog();
 
-        IntImp interpreter = new IntImp(new Conf());
+        IntHaveFun interpreter = new IntHaveFun(new Conf());
         interpreter.visit(tree);
     }
 }
